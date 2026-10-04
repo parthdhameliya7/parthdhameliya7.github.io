@@ -1,0 +1,16 @@
+<header class="site-header">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="site-header__inner">
+    <a class="brand" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+    <div class="site-header__tools">
+      <nav class="nav" aria-label="Primary">
+        <a class="nav__link{% if page.url == '/' %} is-active{% endif %}" href="{{ '/' | relative_url }}">Home</a>
+        <a class="nav__link{% if page.url == '/archive/' %} is-active{% endif %}" href="{{ '/archive/' | relative_url }}">Archive</a>
+      </nav>
+      <button type="button" class="theme-toggle" data-theme-toggle aria-label="Switch to dark theme">
+        <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true">◐</span>
+        <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true">◑</span>
+      </button>
+    </div>
+  </div>
+</header>

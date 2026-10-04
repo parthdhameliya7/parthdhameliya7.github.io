@@ -1,0 +1,45 @@
+---
+layout: default
+---
+
+<article class="post">
+  <header class="post__header">
+    <p class="post__meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+      {% if page.reading_time %}
+        <span class="dot" aria-hidden="true">·</span>
+        <span>{{ page.reading_time }} min read</span>
+      {% endif %}
+    </p>
+    <h1 class="post__title">{{ page.title }}</h1>
+    {% if page.subtitle %}
+      <p class="post__subtitle">{{ page.subtitle }}</p>
+    {% endif %}
+    {% if page.tags and page.tags.size > 0 %}
+      <ul class="tag-list" aria-label="Tags">
+        {% for tag in page.tags %}
+          <li>{{ tag }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </header>
+
+  <div class="post__body prose">
+    {{ content }}
+  </div>
+
+  <nav class="post__nav" aria-label="Post navigation">
+    {% if page.previous.url %}
+      <a class="post__nav-link post__nav-link--prev" href="{{ page.previous.url | relative_url }}">
+        <span class="post__nav-label">Previous</span>
+        <span class="post__nav-title">{{ page.previous.title }}</span>
+      </a>
+    {% endif %}
+    {% if page.next.url %}
+      <a class="post__nav-link post__nav-link--next" href="{{ page.next.url | relative_url }}">
+        <span class="post__nav-label">Next</span>
+        <span class="post__nav-title">{{ page.next.title }}</span>
+      </a>
+    {% endif %}
+  </nav>
+</article>

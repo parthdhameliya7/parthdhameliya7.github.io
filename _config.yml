@@ -1,0 +1,47 @@
+# ============================================================
+# SITE SETTINGS
+# ============================================================
+
+title: Parth Dhameliya
+tagline: Data Scientist @ XPO
+description: >-
+  Personal blog by Parth Dhameliya, Data Scientist at XPO — reproducing
+  state-of-the-art AI research and sharing what I learn.
+url: "https://parthdhameliya7.github.io"
+baseurl: ""
+
+# Author / profile
+author:
+  name: Parth Dhameliya
+  bio: ""
+  email: parthdhameliya789@gmail.com
+  location: City, Country         # optional; leave blank to hide
+  # Social links — leave empty ("") to hide a link
+  twitter: ""                     # e.g. yourhandle (no @)
+  github: parthdhameliya7
+  linkedin: ""                    # e.g. your-profile-slug
+  website: ""                     # e.g. https://yoursite.com
+
+# Profile picture
+avatar: /assets/images/profile.jpg
+
+# ============================================================
+# BUILD SETTINGS (usually leave as-is)
+# ============================================================
+
+permalink: /:year/:month/:day/:title/
+markdown: kramdown
+kramdown:
+  math_engine: mathjax
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor
+  - .gitignore
+  - assets/images/*.heic

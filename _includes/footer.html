@@ -1,0 +1,35 @@
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <p class="site-footer__brand">{{ site.title }}</p>
+    <p class="site-footer__copy">&copy; {{ 'now' | date: '%Y' }} {{ site.author.name }}. Built with Jekyll.</p>
+    {% assign show_github = false %}
+    {% assign show_twitter = false %}
+    {% assign show_linkedin = false %}
+    {% assign show_website = false %}
+    {% assign show_email = false %}
+    {% if site.author.github and site.author.github != "" %}{% assign show_github = true %}{% endif %}
+    {% if site.author.twitter and site.author.twitter != "" %}{% assign show_twitter = true %}{% endif %}
+    {% if site.author.linkedin and site.author.linkedin != "" %}{% assign show_linkedin = true %}{% endif %}
+    {% if site.author.website and site.author.website != "" %}{% assign show_website = true %}{% endif %}
+    {% if site.author.email and site.author.email != "" and site.author.email != "you@example.com" %}{% assign show_email = true %}{% endif %}
+    {% if show_github or show_twitter or show_linkedin or show_website or show_email %}
+      <ul class="social" aria-label="Social links">
+        {% if show_github %}
+          <li><a href="https://github.com/{{ site.author.github }}" rel="me noopener" target="_blank">GitHub</a></li>
+        {% endif %}
+        {% if show_twitter %}
+          <li><a href="https://x.com/{{ site.author.twitter }}" rel="me noopener" target="_blank">X</a></li>
+        {% endif %}
+        {% if show_linkedin %}
+          <li><a href="https://www.linkedin.com/in/{{ site.author.linkedin }}" rel="me noopener" target="_blank">LinkedIn</a></li>
+        {% endif %}
+        {% if show_website %}
+          <li><a href="{{ site.author.website }}" rel="me noopener" target="_blank">Website</a></li>
+        {% endif %}
+        {% if show_email %}
+          <li><a href="mailto:{{ site.author.email }}">Email</a></li>
+        {% endif %}
+      </ul>
+    {% endif %}
+  </div>
+</footer>

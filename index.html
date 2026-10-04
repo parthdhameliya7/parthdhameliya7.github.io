@@ -1,0 +1,74 @@
+---
+layout: default
+---
+
+<section class="hero">
+  <div class="hero__identity">
+    <img
+      class="hero__avatar"
+      src="{{ site.avatar | relative_url }}"
+      alt="{{ site.author.name }}"
+      width="260"
+      height="312"
+    >
+    <div class="hero__text">
+      <p class="hero__brand">{{ site.title }}</p>
+      <h1 class="hero__title">{{ site.tagline }}</h1>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="#writing">Read the latest</a>
+        {% if site.author.github and site.author.github != "" %}
+          <a
+            class="btn btn--icon"
+            href="https://github.com/{{ site.author.github }}"
+            rel="me noopener"
+            target="_blank"
+            aria-label="GitHub"
+          >
+            <svg viewBox="0 0 16 16" width="22" height="22" aria-hidden="true">
+              <path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
+            </svg>
+          </a>
+        {% endif %}
+        {% if site.author.email and site.author.email != "" and site.author.email != "you@example.com" %}
+          <a
+            class="btn btn--icon"
+            href="mailto:{{ site.author.email }}"
+            aria-label="Email"
+          >
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.75"/>
+              <path d="M4 7.5 12 13l8-5.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="writing" id="writing">
+  <div class="section-heading">
+    <h2>Writing</h2>
+    <a class="section-heading__link" href="{{ '/archive/' | relative_url }}">View all</a>
+  </div>
+
+  {% if site.posts.size > 0 %}
+    <ul class="post-list">
+      {% for post in site.posts limit: 8 %}
+        <li class="post-list__item">
+          <a class="post-list__link" href="{{ post.url | relative_url }}">
+            <time class="post-list__date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>
+            <span class="post-list__title">{{ post.title }}</span>
+            {% if post.subtitle %}
+              <span class="post-list__excerpt">{{ post.subtitle }}</span>
+            {% else %}
+              <span class="post-list__excerpt">{{ post.excerpt | strip_html | truncate: 120 }}</span>
+            {% endif %}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="empty-state">No posts yet.</p>
+  {% endif %}
+</section>
